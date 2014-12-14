@@ -43,32 +43,13 @@ var listClue: Array<Clue> = [
     Clue(nameP: "nome5",groupP: 3)
     ];
 
-func shuffle<Clue>(var list: Array<Clue>, var groupV:Int) -> Array<Clue> {
+func shuffle<String>(var list: Array<String>, var groupV:Int) -> Array<String> {
     for i in 0..<list.count {
         let j = Int(arc4random_uniform(UInt32(list.count - i))) + i
         list.insert(list.removeAtIndex(j), atIndex: i)
     }
     return list
 }
-shuffle(listClue, 2)
-for i in 0..<listClue.count {
-    print(listClue[i].name)
-    print(listClue[i].group)
-}
-
-println()
-
-let filemanager:NSFileManager = NSFileManager()
-let files = filemanager.enumeratorAtPath(NSHomeDirectory())
-while let file: AnyObject = files?.nextObject() {
-    println(file)
-}
-
-
-let p1  =   "/path/to/any.json"
-let d1  =   NSData(contentsOfFile: p1)
-let a1 : AnyObject! =   NSJSONSerialization.JSONObjectWithData(d1!, options: NSJSONReadingOptions(0), error: nil)
-
 
 
 
